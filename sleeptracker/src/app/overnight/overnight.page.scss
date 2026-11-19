@@ -1,0 +1,726 @@
+
+/* ========================================
+   MOONLY - DREAMY OVERNIGHT PAGE
+   ======================================== */
+
+ion-content {
+  --background: #f5efff;
+}
+
+ion-toolbar {
+  --background: #281052;
+  --color: #ffffff;
+  --min-height: 58px;
+}
+
+ion-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.sleep-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+/* ========================================
+   DREAMY HERO SECTION
+   ======================================== */
+
+.night-hero {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 330px;
+  padding: 38px 20px 58px;
+
+  text-align: center;
+  color: #ffffff;
+
+  background: linear-gradient(
+    180deg,
+    #2b0c60 0%,
+    #6723b5 55%,
+    #9746ef 100%
+  );
+
+  border-radius: 0 0 36px 36px;
+}
+
+.night-hero::before {
+  content: '';
+  position: absolute;
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.night-hero h1 {
+  position: relative;
+  z-index: 2;
+
+  font-family: 'Fredoka', sans-serif;
+  font-size: 34px;
+  font-weight: 600;
+
+  margin: 16px 0 8px;
+}
+
+.night-hero p {
+  position: relative;
+  z-index: 2;
+
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+
+  color: #e9d8ff;
+  margin: 0;
+}
+
+/* Stars */
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  color: #ffe6a6;
+  font-size: 17px;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.star-1 { top: 18%; left: 15%; }
+.star-2 { top: 30%; right: 17%; }
+.star-3 { top: 52%; left: 9%; }
+.star-4 { top: 12%; right: 30%; }
+.star-5 { top: 65%; right: 11%; }
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* Cute Moon Character */
+.hero-moon {
+  position: relative;
+  z-index: 2;
+
+  width: 112px;
+  height: 112px;
+  margin: 0 auto;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    145deg,
+    #f0fbff,
+    #a9dfff
+  );
+
+  box-shadow:
+    0 0 0 16px rgba(255, 255, 255, 0.07),
+    0 0 0 35px rgba(255, 255, 255, 0.04),
+    0 12px 30px rgba(20, 4, 60, 0.2);
+}
+
+.moon-face {
+  position: absolute;
+  inset: 0;
+}
+
+.moon-eye {
+  position: absolute;
+  top: 49px;
+
+  width: 17px;
+  height: 9px;
+
+  border-bottom: 3px solid #52618b;
+  border-radius: 0 0 50% 50%;
+}
+
+.left-eye {
+  left: 27px;
+}
+
+.right-eye {
+  right: 27px;
+}
+
+.moon-mouth {
+  position: absolute;
+  top: 71px;
+  left: 52px;
+
+  width: 10px;
+  height: 15px;
+
+  border: 3px solid #52618b;
+  border-radius: 50%;
+}
+
+/* Sleeping Hat */
+.sleep-cap {
+  position: absolute;
+
+  width: 75px;
+  height: 40px;
+
+  top: -14px;
+  right: -2px;
+
+  background: #88e3f7;
+
+  border-radius: 80% 30% 20% 10%;
+
+  transform: rotate(18deg);
+}
+
+.cap-pom {
+  position: absolute;
+
+  width: 19px;
+  height: 19px;
+
+  right: -5px;
+  bottom: -4px;
+
+  border-radius: 50%;
+  background: #d5faff;
+}
+
+/* Hills */
+.hero-hills {
+  position: absolute;
+  bottom: -25px;
+  left: -10%;
+
+  width: 120%;
+  height: 75px;
+
+  border-radius: 50% 50% 0 0;
+  background: #4b1699;
+  opacity: 0.55;
+}
+
+/* ========================================
+   SLEEP FORM
+   ======================================== */
+
+.sleep-form {
+  padding: 20px 18px 32px;
+}
+
+.section-heading {
+  margin: 8px 4px 18px;
+}
+
+.section-heading h2 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 24px;
+  color: #39265e;
+  margin: 0 0 4px;
+}
+
+.section-heading span {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: #9185ad;
+}
+
+/* ========================================
+   TIME CARDS
+   ======================================== */
+
+.time-card {
+  --background: #ffffff;
+
+  margin: 15px 0;
+  border-radius: 24px;
+
+  border: 1px solid #eee5ff;
+
+  box-shadow:
+    0 7px 22px rgba(71, 35, 126, 0.08);
+}
+
+.time-card ion-card-content {
+  padding: 20px;
+}
+
+.time-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.time-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 27px;
+  }
+}
+
+.bedtime-icon {
+  background: #e8ddff;
+  color: #7542c6;
+}
+
+.wake-icon {
+  background: #fff0d5;
+  color: #e7a13e;
+}
+
+.time-info h3 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 20px;
+  color: #39265e;
+
+  margin: 0 0 4px;
+}
+
+.time-info p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: #948aa9;
+
+  margin: 0;
+}
+
+.date-selector {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 18px;
+  padding: 12px;
+
+  border-radius: 16px;
+  background: #f5f0ff;
+}
+
+ion-datetime-button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+
+ion-datetime {
+  --background: #ffffff;
+  --background-rgb: 255, 255, 255;
+}
+
+/* ========================================
+   SLEEP DURATION
+   ======================================== */
+
+.duration-card {
+  margin: 22px 0;
+  padding: 28px 18px;
+
+  text-align: center;
+  border-radius: 26px;
+
+  background: linear-gradient(
+    135deg,
+    #e7d6ff 0%,
+    #c9b2fa 50%,
+    #e9c9ff 100%
+  );
+
+  box-shadow:
+    0 8px 25px rgba(119, 70, 200, 0.15);
+}
+
+.duration-stars {
+  color: #7b48c9;
+  font-size: 20px;
+  letter-spacing: 7px;
+}
+
+.duration-card p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #5d438a;
+  margin: 12px 0 5px;
+}
+
+.duration-card h2 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 46px;
+  font-weight: 600;
+  color: #35165f;
+
+  margin: 0 0 8px;
+}
+
+.duration-card span {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: #694e91;
+}
+
+/* ========================================
+   SAVE BUTTON
+   ======================================== */
+
+.save-button {
+  --background: #8c37e9;
+  --background-hover: #7c27d7;
+  --background-activated: #6d1ec2;
+
+  --color: #ffffff;
+  --border-radius: 30px;
+
+  --box-shadow:
+    0 7px 20px rgba(130, 50, 210, 0.25);
+
+  height: 56px;
+  margin-top: 22px;
+
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: none;
+}
+
+.save-button ion-icon {
+  font-size: 21px;
+  margin-right: 8px;
+}
+
+.footer-message {
+  text-align: center;
+  font-size: 12px;
+  color: #9a8bb3;
+  margin: 18px 0 8px;
+}
+
+ion-note {
+  display: block;
+  margin: 12px 6px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ========================================
+   BOTTOM NAVIGATION
+   ======================================== */
+
+ion-footer {
+  box-shadow:
+    0 -3px 18px rgba(52, 25, 94, 0.09);
+}
+
+ion-tab-bar {
+  --background: #ffffff;
+  --color: #9990b0;
+  --color-selected: #8338d7;
+
+  border-top: 1px solid #eee6ff;
+  height: 66px;
+}
+
+ion-tab-button {
+  --color: #9990b0;
+  --color-selected: #8338d7;
+
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+
+  ion-icon {
+    font-size: 23px;
+    margin-bottom: 3px;
+  }
+
+  ion-label {
+    font-size: 12px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 480px) {
+  .night-hero {
+    min-height: 310px;
+    padding-top: 34px;
+  }
+
+  .night-hero h1 {
+    font-size: 30px;
+  }
+
+  .sleep-form {
+    padding: 18px 14px 28px;
+  }
+
+  .duration-card h2 {
+    font-size: 40px;
+  }
+
+  ion-tab-bar {
+    height: 62px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star {
+    animation: none;
+  }
+}
+
+/* ========================================
+   MOONLY - HARMONIZED COLOR PALETTE
+   ======================================== */
+
+/* Softer page background */
+ion-content {
+  --background: #f5f0ff;
+}
+
+/* Header matches the night sky */
+ion-toolbar {
+  --background: #27134f;
+  --color: #ffffff;
+}
+
+/* Dreamy blue-purple night sky */
+.night-hero {
+  background: linear-gradient(
+    180deg,
+    #27134f 0%,
+    #443080 38%,
+    #7252b8 72%,
+    #9878dc 100%
+  );
+}
+
+/* Softer atmospheric glow */
+.night-hero::before {
+  background: rgba(197, 177, 255, 0.08);
+}
+
+/* Stars */
+.star {
+  color: #f9dfb4;
+}
+
+/* Moon character: softer lavender-blue */
+.hero-moon {
+  background: linear-gradient(
+    145deg,
+    #e9e9ff 0%,
+    #c8d6f5 55%,
+    #b7bce9 100%
+  );
+
+  box-shadow:
+    0 0 0 16px rgba(210, 190, 255, 0.09),
+    0 0 0 35px rgba(210, 190, 255, 0.04),
+    0 12px 30px rgba(26, 13, 65, 0.18);
+}
+
+/* Softer moon facial features */
+.moon-eye {
+  border-bottom-color: #655a93;
+}
+
+.moon-mouth {
+  border-color: #655a93;
+}
+
+/* Nightcap in muted periwinkle */
+.sleep-cap {
+  background: #a9a9ef;
+}
+
+.cap-pom {
+  background: #e7e2ff;
+}
+
+/* Hills blend with the night sky */
+.hero-hills {
+  background: #6744ad;
+  opacity: 0.5;
+}
+
+/* Main section */
+.sleep-form {
+  background: #f5f0ff;
+}
+
+/* Consistent card colors */
+.time-card {
+  --background: #fffaff;
+  border: 1px solid #eae0f8;
+
+  box-shadow:
+    0 7px 22px rgba(77, 52, 131, 0.07);
+}
+
+/* Bedtime icon */
+.bedtime-icon {
+  background: #e9defa;
+  color: #7959b8;
+}
+
+/* Wake-up icon: muted peach instead of yellow */
+.wake-icon {
+  background: #f5e5ef;
+  color: #bd789b;
+}
+
+/* Date selection area */
+.date-selector {
+  background: #f0eafa;
+}
+
+/* Sleep duration card */
+.duration-card {
+  background: linear-gradient(
+    135deg,
+    #e9ddfb 0%,
+    #d6c3f2 55%,
+    #e6d7f7 100%
+  );
+
+  box-shadow:
+    0 8px 24px rgba(111, 82, 171, 0.12);
+}
+
+.duration-card h2 {
+  color: #38235f;
+}
+
+.duration-stars {
+  color: #8564c1;
+}
+
+/* Save button */
+.save-button {
+  --background: #7954bf;
+  --background-hover: #6946ac;
+  --background-activated: #583999;
+
+  --box-shadow:
+    0 7px 20px rgba(107, 74, 173, 0.2);
+}
+
+/* Navigation */
+ion-tab-bar {
+  --background: #fffaff;
+  --color: #9487aa;
+  --color-selected: #7954bf;
+
+  border-top: 1px solid #eae0f8;
+}
+
+ion-tab-button {
+  --color: #9487aa;
+  --color-selected: #7954bf;
+}
+
+/* ========================================
+   Watercolor Moon - Final Hero Styling
+   ======================================== */
+
+.night-hero {
+  background: linear-gradient(
+    180deg,
+    #27134f 0%,
+    #443080 55%,
+    #7252b8 100%
+  );
+
+  min-height: auto;
+  padding: 20px 18px 36px;
+  border-radius: 0 0 34px 34px;
+}
+
+/* Remove old decorative background */
+.night-hero::before {
+  display: none;
+}
+
+/* Watercolor illustration */
+.moon-illustration {
+  position: relative;
+  z-index: 2;
+
+  width: 220px;
+  max-width: 100%;
+  margin: 0 auto 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moon-illustration img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Hero title */
+.night-hero h1 {
+  margin: 8px 0;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 31px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Description */
+.hero-description {
+  position: relative;
+  z-index: 2;
+
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #e9ddff;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .night-hero {
+    padding: 16px 16px 30px;
+  }
+
+  .moon-illustration {
+    width: 190px;
+  }
+
+  .night-hero h1 {
+    font-size: 28px;
+  }
+}

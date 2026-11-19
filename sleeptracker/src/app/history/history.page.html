@@ -1,0 +1,220 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>☾ Moonly Sleep Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="history-container">
+
+    <!-- Dashboard Hero -->
+    <section class="history-hero">
+
+      <!-- Decorative Stars -->
+      <div class="hero-decoration">
+        <span class="hero-star star-one">✦</span>
+        <span class="hero-star star-two">✧</span>
+        <span class="hero-star star-three">✦</span>
+      </div>
+
+      <!-- Watercolor Calendar Illustration -->
+      <div class="hero-icon watercolor-hero">
+        <img
+          src="/assets/history-calendar.png"
+          alt="Watercolor sleep calendar"
+        />
+      </div>
+
+      <h1>Sleep Statistics</h1>
+
+      <p>
+        Every little dream tells a story.
+        <br />
+        Let's look back at your restful moments.
+      </p>
+
+      <!-- Summary Statistics -->
+      <div class="summary-grid">
+
+        <!-- Overnight Count -->
+        <div class="summary-card overnight-summary">
+          <ion-icon name="moon-outline"></ion-icon>
+          <h2>{{ overnightCount }}</h2>
+          <span>Overnight</span>
+        </div>
+
+        <!-- Sleepiness Count -->
+        <div class="summary-card sleepiness-summary">
+          <ion-icon name="sunny-outline"></ion-icon>
+          <h2>{{ sleepinessCount }}</h2>
+          <span>Sleepiness</span>
+        </div>
+
+        <!-- Total Count -->
+        <div class="summary-card total-summary">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <h2>{{ totalCount }}</h2>
+          <span>Total</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Records Section -->
+    <div class="history-content">
+
+      <!-- Section Heading -->
+      <div class="section-heading">
+        <h2>My Sleep Journal</h2>
+        <span>✦ Little moments, lovely dreams</span>
+      </div>
+
+      <!-- Filter Section -->
+      <div class="filter-section">
+
+        <h3>Your Records</h3>
+
+        <div class="filter-buttons">
+
+          <ion-button
+            size="small"
+            [fill]="selectedFilter === 'all' ? 'solid' : 'outline'"
+            (click)="setFilter('all')">
+            All
+          </ion-button>
+
+          <ion-button
+            size="small"
+            [fill]="selectedFilter === 'overnight' ? 'solid' : 'outline'"
+            (click)="setFilter('overnight')">
+            Overnight
+          </ion-button>
+
+          <ion-button
+            size="small"
+            [fill]="selectedFilter === 'sleepiness' ? 'solid' : 'outline'"
+            (click)="setFilter('sleepiness')">
+            Sleepiness
+          </ion-button>
+
+        </div>
+
+      </div>
+
+      <!-- Empty State -->
+      <div
+        class="empty-state"
+        *ngIf="filteredRecords.length === 0">
+
+        <img
+          class="empty-illustration"
+          src="/assets/history-moon.png"
+          alt="Sleeping watercolor moon"
+        />
+
+        <h3>No dreams recorded yet</h3>
+
+        <p>
+          Your sleep memories will appear here
+          once you start logging.
+        </p>
+
+      </div>
+
+      <!-- History Records -->
+      <ion-card
+        class="record-card"
+        *ngFor="let record of filteredRecords">
+
+        <ion-card-content>
+
+          <div class="record-header">
+
+            <!-- Watercolor Record Illustration -->
+            <div class="record-icon watercolor-record">
+
+              <img
+                [src]="isOvernight(record)
+                  ? '/assets/history-moon.png'
+                  : '/assets/history-sun.png'"
+                [alt]="isOvernight(record)
+                  ? 'Watercolor moon'
+                  : 'Watercolor sun'"
+              />
+
+            </div>
+
+            <!-- Record Information -->
+            <div class="record-info">
+
+              <h3>{{ getRecordTitle(record) }}</h3>
+
+              <p class="record-date">
+                {{ getRecordDate(record) }}
+              </p>
+
+            </div>
+
+          </div>
+
+          <!-- Record Details -->
+          <div class="record-details">
+
+            <span>
+              {{ isOvernight(record)
+                ? '✦ Sleep Duration'
+                : '✦ Sleepiness Level' }}
+            </span>
+
+            <h4>{{ getRecordSummary(record) }}</h4>
+
+          </div>
+
+        </ion-card-content>
+
+      </ion-card>
+
+      <!-- Footer Message -->
+      <p class="footer-message">
+        ✧ Every good night is worth remembering. ✧
+      </p>
+
+    </div>
+
+  </div>
+
+</ion-content>
+
+<!-- Bottom Navigation -->
+<ion-footer>
+
+  <ion-tab-bar>
+
+    <!-- Overnight Page -->
+    <ion-tab-button
+      tab="overnight"
+      [routerLink]="['/overnight']"
+      aria-label="Overnight Sleep">
+
+      <ion-icon name="moon-outline"></ion-icon>
+      <ion-label>Overnight</ion-label>
+
+    </ion-tab-button>
+
+    <!-- History Page -->
+    <ion-tab-button
+      tab="history"
+      [routerLink]="['/history']"
+      aria-label="Sleep History">
+
+      <ion-icon name="calendar-outline"></ion-icon>
+      <ion-label>History</ion-label>
+
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-footer>

@@ -1,69 +1,148 @@
+
 /*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * Moonly Sleep Tracker - Global Styles
+ * Soft lavender, watercolor-inspired theme
  */
 
-/* Core CSS required for Ionic components to work properly */
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
+
+/* Core Ionic CSS */
 @import "@ionic/angular/css/core.css";
 
-/* Basic CSS for apps built with Ionic */
+/* Basic Ionic CSS */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
 
-/* Optional CSS utils that can be commented out */
+/* Optional Ionic CSS utilities */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
+/* Ionic Dark Mode */
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
 
 
-/* =====================================
-   Moonly - Global Ionic Primary Color
-   ===================================== */
+/* ========================================
+   Moonly Global Theme
+   ======================================== */
 
 :root {
-  --ion-color-primary: #34345e;
-  --ion-color-primary-rgb: 52, 52, 94;
+  /* Default font */
+  --ion-font-family: 'Nunito', sans-serif;
+
+  /* Moonly primary color */
+  --ion-color-primary: #8278d3;
+  --ion-color-primary-rgb: 130, 120, 211;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #2e2e53;
-  --ion-color-primary-tint: #48486e;
-
-  --ion-font-family: 'Nunito', sans-serif;
+  --ion-color-primary-shade: #726aba;
+  --ion-color-primary-tint: #8f86d8;
 }
 
 
-/* =========================================
-   MOONLY - TIME POPOVER THEME
-   ========================================= */
+/* ========================================
+   Typography
+   ======================================== */
 
-/* Popover background and shadow */
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+}
+
+/* Cute rounded headings */
+h1,
+h2,
+h3,
+h4,
+ion-title,
+ion-card-title {
+  font-family: 'Fredoka', sans-serif;
+  letter-spacing: 0.2px;
+}
+
+h1 {
+  font-weight: 600;
+}
+
+h2,
+h3 {
+  font-weight: 500;
+}
+
+p,
+ion-label,
+ion-note {
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Buttons */
+ion-button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-transform: none;
+}
+
+/* Bottom navigation */
+ion-tab-button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+
+/* Date and time selection */
+ion-datetime,
+ion-datetime-button {
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Toast messages */
+ion-toast {
+  font-family: 'Nunito', sans-serif;
+}
+
+
+/* ========================================
+   Moonly Global Visual Details
+   ======================================== */
+
+ion-card {
+  overflow: hidden;
+}
+
+/* Header title */
+ion-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+/* Content font */
+ion-content {
+  font-family: 'Nunito', sans-serif;
+}
+
+
+/* ========================================
+   Moonly Time Popover Theme
+   From Sleepiness / Storage Branch
+   ======================================== */
+
 ion-popover {
   --background: #f2edff;
-  --box-shadow: 0 18px 45px rgba(52, 52, 94, 0.20);
+
+  --box-shadow:
+    0 18px 45px rgba(52, 52, 94, 0.20);
+
   --backdrop-opacity: 0.28;
 
-  /* Consistent typography */
+  /* Typography */
   --ion-font-family: 'Nunito', sans-serif;
   --ion-text-color: #45406d;
 
@@ -81,9 +160,8 @@ ion-popover::part(content) {
 
   border: 1px solid #e5def9;
 
-  box-shadow: 0 18px 45px rgba(
-    52, 52, 94, 0.20
-  );
+  box-shadow:
+    0 18px 45px rgba(52, 52, 94, 0.20);
 
   overflow: hidden;
 }

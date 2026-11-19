@@ -1,0 +1,218 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>☾ Moonly Sleep Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="sleep-container">
+
+    <!-- Watercolor Night Hero -->
+    <section class="night-hero">
+
+      <!-- Watercolor Moon Illustration -->
+      <div class="moon-illustration">
+        <img
+          src="/assets/moonly-watercolor.png"
+          alt="Watercolor Moon"
+        />
+      </div>
+
+      <h1>Sweet Dreams!</h1>
+
+      <p class="hero-description">
+        A little rest goes a long way.
+        <br />
+        Let's track your cozy night.
+      </p>
+
+    </section>
+
+    <!-- Main Sleep Form -->
+    <div class="sleep-form">
+
+      <!-- Section Heading -->
+      <div class="section-heading">
+        <h2>My Sleep Diary</h2>
+        <span>✦ Good night, little star</span>
+      </div>
+
+      <!-- Bedtime Card -->
+      <ion-card class="time-card">
+
+        <ion-card-content>
+
+          <div class="time-card-heading">
+
+            <div class="time-icon bedtime-icon">
+              <ion-icon name="moon-outline"></ion-icon>
+            </div>
+
+            <div class="time-info">
+              <h3>Bedtime</h3>
+              <p>When did you go to bed?</p>
+            </div>
+
+          </div>
+
+          <div class="date-selector">
+            <ion-datetime-button
+              datetime="bedtimePicker">
+            </ion-datetime-button>
+          </div>
+
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+
+              <ion-datetime
+                id="bedtimePicker"
+                presentation="date-time"
+                [(ngModel)]="bedtime"
+                [showDefaultButtons]="true"
+                doneText="Done"
+                cancelText="Cancel">
+              </ion-datetime>
+
+            </ng-template>
+          </ion-modal>
+
+        </ion-card-content>
+
+      </ion-card>
+
+      <!-- Wake-up Time Card -->
+      <ion-card class="time-card">
+
+        <ion-card-content>
+
+          <div class="time-card-heading">
+
+            <div class="time-icon wake-icon">
+              <ion-icon name="sunny-outline"></ion-icon>
+            </div>
+
+            <div class="time-info">
+              <h3>Wake-up Time</h3>
+              <p>When did you wake up?</p>
+            </div>
+
+          </div>
+
+          <div class="date-selector">
+            <ion-datetime-button
+              datetime="wakePicker">
+            </ion-datetime-button>
+          </div>
+
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+
+              <ion-datetime
+                id="wakePicker"
+                presentation="date-time"
+                [(ngModel)]="wakeTime"
+                [showDefaultButtons]="true"
+                doneText="Done"
+                cancelText="Cancel">
+              </ion-datetime>
+
+            </ng-template>
+          </ion-modal>
+
+        </ion-card-content>
+
+      </ion-card>
+
+      <!-- Sleep Duration -->
+      <div class="duration-card">
+
+        <div class="duration-stars">
+          ✦ &nbsp; ✧ &nbsp; ✦
+        </div>
+
+        <p>Your Sleep Duration</p>
+
+        <h2>{{ sleepDuration }}</h2>
+
+        <span>
+          Every minute of rest matters ♡
+        </span>
+
+      </div>
+
+      <!-- Validation Message -->
+      <ion-note
+        *ngIf="!isValid"
+        color="danger">
+
+        Please select a valid sleep period
+        of up to 24 hours.
+        Wake-up time cannot be in the future.
+
+      </ion-note>
+
+      <!-- Save Button -->
+      <ion-button
+        class="save-button"
+        expand="block"
+        [disabled]="!isValid"
+        (click)="saveSleep()">
+
+        <ion-icon
+          name="moon-outline"
+          slot="start">
+        </ion-icon>
+
+        Save My Sleep
+
+      </ion-button>
+
+      <!-- Footer Message -->
+      <p class="footer-message">
+        ✧ Rest well. Tomorrow is a new day. ✧
+      </p>
+
+      <!-- Success Toast -->
+      <ion-toast
+        [isOpen]="showToast"
+        [message]="toastMessage"
+        [duration]="2000"
+        (didDismiss)="showToast = false">
+      </ion-toast>
+
+    </div>
+
+  </div>
+
+</ion-content>
+
+<!-- Bottom Navigation -->
+<ion-footer>
+
+  <ion-tab-bar>
+
+    <ion-tab-button
+      tab="overnight"
+      [routerLink]="['/overnight']"
+      aria-label="Overnight Sleep">
+
+      <ion-icon name="moon-outline"></ion-icon>
+      <ion-label>Overnight</ion-label>
+
+    </ion-tab-button>
+
+    <ion-tab-button
+      tab="history"
+      [routerLink]="['/history']"
+      aria-label="Sleep History">
+
+      <ion-icon name="calendar-outline"></ion-icon>
+      <ion-label>History</ion-label>
+
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-footer>
