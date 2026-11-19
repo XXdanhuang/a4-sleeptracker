@@ -1,0 +1,520 @@
+
+/* ========================================
+   MOONLY - SLEEP HISTORY DASHBOARD
+   ======================================== */
+
+ion-content {
+  --background: #f5f0ff;
+}
+
+ion-toolbar {
+  --background: #27134f;
+  --color: #ffffff;
+}
+
+.history-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+/* Dashboard Hero */
+
+.history-hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+
+  padding: 36px 20px 42px;
+
+  background: linear-gradient(
+    180deg,
+    #27134f 0%,
+    #443080 50%,
+    #7252b8 100%
+  );
+
+  border-radius: 0 0 38px 38px;
+  color: white;
+}
+
+.hero-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-star {
+  position: absolute;
+  color: #e7d3ff;
+  opacity: 0.75;
+  font-size: 18px;
+}
+
+.star-one {
+  top: 20%;
+  left: 12%;
+}
+
+.star-two {
+  top: 35%;
+  right: 13%;
+}
+
+.star-three {
+  top: 58%;
+  left: 7%;
+}
+
+.hero-icon {
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(224, 205, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  ion-icon {
+    font-size: 42px;
+    color: #e7d9ff;
+  }
+}
+
+.history-hero h1 {
+  position: relative;
+  z-index: 1;
+
+  margin: 0 0 12px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.history-hero > p {
+  position: relative;
+  z-index: 1;
+
+  margin: 0;
+  color: #e9ddff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Statistics */
+
+.summary-grid {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+
+  margin-top: 30px;
+}
+
+.summary-card {
+  min-width: 0;
+  padding: 18px 8px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(8px);
+
+  ion-icon {
+    font-size: 25px;
+    color: #f3e8ff;
+  }
+
+  h2 {
+    margin: 9px 0 4px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+  }
+
+  span {
+    display: block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    color: #eee1ff;
+  }
+}
+
+/* Main Content */
+
+.history-content {
+  padding: 30px 20px 36px;
+}
+
+.section-heading {
+  margin-bottom: 28px;
+
+  h2 {
+    margin: 0 0 8px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #38235f;
+  }
+
+  span {
+    color: #9582b2;
+    font-size: 14px;
+  }
+}
+
+/* Filters */
+
+.filter-section {
+  margin-bottom: 20px;
+
+  h3 {
+    margin: 0 0 14px;
+    color: #38235f;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  ion-button {
+    margin: 0;
+    height: 36px;
+
+    font-size: 12px;
+    text-transform: none;
+
+    --border-radius: 20px;
+    --background: #7954bf;
+    --color: #ffffff;
+    --border-color: #bba5e0;
+    --color-activated: #ffffff;
+  }
+
+  ion-button[fill="outline"] {
+    --color: #7954bf;
+    --background: transparent;
+  }
+}
+
+/* Record Cards */
+
+.record-card {
+  margin: 14px 0;
+  border-radius: 24px;
+
+  --background: #fffaff;
+
+  border: 1px solid #eae0f8;
+
+  box-shadow:
+    0 8px 24px rgba(77, 52, 131, 0.07);
+}
+
+.record-card ion-card-content {
+  padding: 20px;
+}
+
+.record-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.record-icon {
+  flex-shrink: 0;
+
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  ion-icon {
+    font-size: 27px;
+  }
+}
+
+.overnight-icon {
+  background: #e9defa;
+  color: #7959b8;
+}
+
+.sleepiness-icon {
+  background: #f5e5ef;
+  color: #bd789b;
+}
+
+.record-info {
+  flex: 1;
+  min-width: 0;
+
+  h3 {
+    margin: 0 0 6px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: #38235f;
+  }
+}
+
+.record-date {
+  margin: 0;
+  color: #9582b2;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Record Details */
+
+.record-details {
+  margin-top: 18px;
+  padding: 16px;
+
+  border-radius: 16px;
+  background: #f0eafa;
+
+  span {
+    color: #8c79ab;
+    font-size: 12px;
+  }
+
+  h4 {
+    margin: 8px 0 0;
+    color: #38235f;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Empty State */
+
+.empty-state {
+  padding: 48px 18px;
+  text-align: center;
+
+  border-radius: 24px;
+  background: #fffaff;
+
+  ion-icon {
+    font-size: 48px;
+    color: #a78bd6;
+  }
+
+  h3 {
+    color: #38235f;
+    font-family: 'Fredoka', sans-serif;
+  }
+
+  p {
+    color: #9582b2;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* Footer */
+
+.footer-message {
+  margin: 32px 0 10px;
+  text-align: center;
+  color: #a08dbb;
+  font-size: 13px;
+}
+
+/* Bottom Navigation */
+
+ion-footer {
+  box-shadow: 0 -2px 12px rgba(52, 52, 94, 0.08);
+}
+
+ion-tab-bar {
+  --background: #fffaff;
+  --color: #9487aa;
+  --color-selected: #7954bf;
+
+  height: 64px;
+  border-top: 1px solid #eae0f8;
+}
+
+ion-tab-button {
+  --color: #9487aa;
+  --color-selected: #7954bf;
+
+  font-size: 12px;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 480px) {
+
+  .history-hero {
+    padding: 28px 14px 32px;
+  }
+
+  .history-hero h1 {
+    font-size: 28px;
+  }
+
+  .hero-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .summary-grid {
+    gap: 7px;
+    margin-top: 24px;
+  }
+
+  .summary-card {
+    padding: 14px 5px;
+    border-radius: 16px;
+
+    h2 {
+      font-size: 27px;
+    }
+
+    span {
+      font-size: 11px;
+    }
+  }
+
+  .history-content {
+    padding: 24px 16px 30px;
+  }
+
+  .section-heading h2 {
+    font-size: 25px;
+  }
+
+  .record-card ion-card-content {
+    padding: 16px;
+  }
+
+  .record-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  ion-tab-bar {
+    height: 60px;
+  }
+}
+
+/* ========================================
+   Moonly Watercolor Illustrations
+   ======================================== */
+
+/* Main calendar illustration */
+.watercolor-hero {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+/* Moon and sun illustrations in records */
+.watercolor-record {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+/* Keep long record titles inside cards */
+.record-info {
+  min-width: 0;
+  flex: 1;
+
+  h3 {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Empty state illustration */
+.empty-illustration {
+  display: block;
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  margin: 0 auto 12px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+
+  .watercolor-hero {
+    width: 130px;
+    height: 130px;
+  }
+
+  .watercolor-record {
+    width: 60px;
+    height: 60px;
+  }
+
+  .record-header {
+    gap: 10px;
+  }
+
+  .record-info h3 {
+    font-size: 17px;
+  }
+
+  .empty-illustration {
+    width: 90px;
+    height: 90px;
+  }
+}
