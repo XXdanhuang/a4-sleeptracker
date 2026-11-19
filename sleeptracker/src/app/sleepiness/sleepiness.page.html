@@ -1,0 +1,269 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar class="moonly-toolbar">
+    <ion-title>
+      <div class="brand">
+        <span class="brand-moon" aria-hidden="true">☾</span>
+        <span>Moonly</span>
+        <span class="brand-subtitle">Sleep Tracker</span>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="moonly-content">
+  <main class="page-container">
+
+    <!-- ===================================
+         Welcome Card
+         =================================== -->
+
+    <section
+      class="welcome-card"
+      aria-labelledby="welcome-title">
+
+      <div class="welcome-copy">
+
+        <p class="eyebrow">
+          ✦ A LITTLE MOMENT FOR YOU
+        </p>
+
+        <h1 id="welcome-title">
+          How sleepy are you?
+        </h1>
+
+        <p class="welcome-description">
+          Check in with yourself and capture
+          how you feel today.
+        </p>
+
+      </div>
+
+      <!-- Horizontal Watercolor Moon Trail -->
+
+      <div class="welcome-art-container">
+        <img
+          class="welcome-trail"
+          src="assets/moonly/moon-trail.png"
+          alt=""
+          aria-hidden="true" />
+      </div>
+
+    </section>
+
+
+    <!-- ===================================
+         Sleepiness Rating Card
+         =================================== -->
+
+    <ion-card class="moonly-card rating-card">
+
+      <ion-card-header>
+
+        <div class="card-heading">
+
+          <div class="heading-copy">
+
+            <p class="eyebrow">
+              01 · DAILY CHECK-IN
+            </p>
+
+            <ion-card-title>
+              Sleepiness Level
+            </ion-card-title>
+
+            <p class="card-description">
+              Choose the description that
+              feels most like you.
+            </p>
+
+          </div>
+
+          <img
+            class="heading-art fox-art"
+            src="assets/moonly/sleepy-fox.png"
+            alt=""
+            aria-hidden="true" />
+
+        </div>
+
+      </ion-card-header>
+
+
+      <ion-card-content>
+
+        <!-- Scale Description -->
+
+        <div class="scale-legend">
+          <span>✦ 1 · Fully alert</span>
+          <span>7 · Very sleepy ☾</span>
+        </div>
+
+
+        <!-- Rating Options -->
+
+        <div
+          class="rating-options"
+          role="group"
+          aria-label="Stanford Sleepiness Scale">
+
+          <ion-button
+            *ngFor="let level of sleepinessLevels"
+            expand="block"
+            class="rating-option"
+            [class.is-selected]="rating === level.value"
+            [fill]="rating === level.value ? 'solid' : 'outline'"
+            [attr.aria-pressed]="rating === level.value"
+            (click)="selectRating(level.value)">
+
+            <span class="rating-number">
+              {{ level.value }}
+            </span>
+
+            <span class="rating-label">
+              {{ level.label }}
+            </span>
+
+            <span
+              *ngIf="rating === level.value"
+              class="rating-check"
+              aria-hidden="true">
+              ✓
+            </span>
+
+          </ion-button>
+
+        </div>
+
+
+        <!-- Selected Rating Feedback -->
+
+        <div
+          *ngIf="rating !== null"
+          class="selection-note"
+          role="status">
+
+          <span aria-hidden="true">✧</span>
+
+          <span>
+            You've selected
+            <strong>{{ rating }} / 7</strong>
+          </span>
+
+        </div>
+
+      </ion-card-content>
+
+    </ion-card>
+
+
+    <!-- ===================================
+         Date and Time Card
+         =================================== -->
+
+    <ion-card class="moonly-card date-card">
+
+      <ion-card-header>
+
+        <div class="card-heading">
+
+          <div class="heading-copy">
+
+            <p class="eyebrow">
+              02 · SAVE THE MOMENT
+            </p>
+
+            <ion-card-title>
+              Date &amp; Time
+            </ion-card-title>
+
+            <p class="card-description">
+              When did you feel this way?
+            </p>
+
+          </div>
+
+          <img
+            class="heading-art calendar-art"
+            src="assets/moonly/moon-calendar.png"
+            alt=""
+            aria-hidden="true" />
+
+        </div>
+
+      </ion-card-header>
+
+
+      <ion-card-content>
+
+        <p class="date-helper">
+          ✦ Choose the date and time of your check-in
+        </p>
+
+        <div class="datetime-shell">
+
+          <ion-datetime
+            presentation="date-time"
+            locale="en-US"
+            [(ngModel)]="logTime"
+            [showDefaultButtons]="true">
+          </ion-datetime>
+
+        </div>
+
+      </ion-card-content>
+
+    </ion-card>
+
+
+    <!-- ===================================
+         Save Button
+         =================================== -->
+
+    <ion-button
+      expand="block"
+      class="save-button"
+      (click)="saveSleepiness()">
+
+      <ion-icon
+        slot="start"
+        name="checkmark-circle-outline">
+      </ion-icon>
+
+      Save My Sleepiness
+
+    </ion-button>
+
+
+    <!-- ===================================
+         Watercolor Footer
+         =================================== -->
+
+    <footer class="page-footer">
+
+      <img
+        src="assets/moonly/cloud-garland.png"
+        alt=""
+        aria-hidden="true" />
+
+      <p>
+        ✦ Small check-ins, sweeter dreams ✦
+      </p>
+
+    </footer>
+
+  </main>
+
+
+  <!-- ===================================
+       Toast Feedback
+       =================================== -->
+
+  <ion-toast
+    [isOpen]="showToast"
+    [message]="toastMessage"
+    [duration]="2000"
+    (didDismiss)="showToast = false">
+  </ion-toast>
+
+</ion-content>

@@ -9,5 +9,9 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
+  },  {
+    path: 'sleepiness',
+    loadComponent: () => import('./sleepiness/sleepiness.page').then( m => m.SleepinessPage)
   },
+
 ];
