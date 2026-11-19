@@ -749,3 +749,25 @@ ion-tab-button {
     padding: 18px 14px 28px;
   }
 }
+
+/* Reset Times Button */
+.reset-button {
+  --color: #7554a3;
+  --border-color: #c5b0df;
+  --border-width: 1.5px;
+  --border-radius: 18px;
+  --background: transparent;
+  --background-hover: rgba(197, 176, 223, 0.15);
+
+  margin-top: 12px;
+  min-height: 48px;
+
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0.3px;
+
+  ion-icon {
+    font-size: 19px;
+  }
+}

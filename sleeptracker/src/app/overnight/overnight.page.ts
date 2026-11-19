@@ -30,7 +30,8 @@ import {
   moonOutline,
   sunnyOutline,
   timeOutline,
-  calendarOutline
+  calendarOutline,
+  refreshOutline
 } from 'ionicons/icons';
 
 import { SleepService } from '../services/sleep.service';
@@ -66,31 +67,41 @@ import { OvernightSleepData } from '../data/overnight-sleep-data';
 })
 export class OvernightPage {
 
-  bedtime: string;
-  wakeTime: string;
+  bedtime: string = '';
+  wakeTime: string = '';
 
   showToast = false;
   toastMessage = '';
 
   constructor(private sleepService: SleepService) {
-
-    // Register icons used by the Moonly UI
-    
     addIcons({
       moonOutline,
       sunnyOutline,
       timeOutline,
-      calendarOutline
+      calendarOutline,
+      refreshOutline
     });
 
-    // Default bedtime: yesterday at 11:00 PM
+    this.setDefaultTimes();
+  }
+
+  // Convert Date to local date-time format
+  private formatLocalDate(date: Date): string {
+    const offset = date.getTimezoneOffset() * 60000;
+
+    return new Date(date.getTime() - offset)
+      .toISOString()
+      .slice(0, 16);
+  }
+
+  // Set the default sleep schedule
+  private setDefaultTimes(): void {
     const now = new Date();
 
     const bedtime = new Date(now);
     bedtime.setDate(bedtime.getDate() - 1);
     bedtime.setHours(23, 0, 0, 0);
 
-    // Default wake-up time: today at 7:00 AM
     const wake = new Date(bedtime);
     wake.setDate(wake.getDate() + 1);
     wake.setHours(7, 0, 0, 0);
@@ -99,19 +110,16 @@ export class OvernightPage {
     this.wakeTime = this.formatLocalDate(wake);
   }
 
-  // Convert Date to local date-time format
-  private formatLocalDate(date: Date): string {
+  // Reset the current form without deleting saved records
+  resetForm(): void {
+    this.setDefaultTimes();
 
-    const offset = date.getTimezoneOffset() * 60000;
-
-    return new Date(date.getTime() - offset)
-      .toISOString()
-      .slice(0, 16);
+    this.toastMessage = 'Sleep times have been reset.';
+    this.showToast = true;
   }
 
   // Calculate sleep duration
   get sleepDuration(): string {
-
     const start = new Date(this.bedtime).getTime();
     const end = new Date(this.wakeTime).getTime();
 
@@ -124,10 +132,7 @@ export class OvernightPage {
       return 'Invalid time range';
     }
 
-    const hours = Math.floor(
-      difference / 3600000
-    );
-
+    const hours = Math.floor(difference / 3600000);
     const minutes = Math.floor(
       (difference % 3600000) / 60000
     );
@@ -137,7 +142,6 @@ export class OvernightPage {
 
   // Validate sleep times before saving
   get isValid(): boolean {
-
     const start = new Date(this.bedtime).getTime();
     const end = new Date(this.wakeTime).getTime();
 
@@ -152,12 +156,8 @@ export class OvernightPage {
 
   // Save overnight sleep record
   saveSleep(): void {
-
     if (!this.isValid) {
-
-      this.toastMessage =
-        'Please check your sleep times.';
-
+      this.toastMessage = 'Please check your sleep times.';
       this.showToast = true;
       return;
     }
@@ -165,15 +165,10 @@ export class OvernightPage {
     const start = new Date(this.bedtime);
     const end = new Date(this.wakeTime);
 
-    const record = new OvernightSleepData(
-      start,
-      end
-    );
+    const record = new OvernightSleepData(start, end);
 
-    // Save using the existing SleepService
     this.sleepService.logOvernightData(record);
 
-    // Show success message
     this.toastMessage =
       'Sweet dreams! Your sleep has been saved!';
 

@@ -38,21 +38,18 @@
       <!-- Summary Statistics -->
       <div class="summary-grid">
 
-        <!-- Overnight Count -->
         <div class="summary-card overnight-summary">
           <ion-icon name="moon-outline"></ion-icon>
           <h2>{{ overnightCount }}</h2>
           <span>Overnight</span>
         </div>
 
-        <!-- Sleepiness Count -->
         <div class="summary-card sleepiness-summary">
           <ion-icon name="sunny-outline"></ion-icon>
           <h2>{{ sleepinessCount }}</h2>
           <span>Sleepiness</span>
         </div>
 
-        <!-- Total Count -->
         <div class="summary-card total-summary">
           <ion-icon name="calendar-outline"></ion-icon>
           <h2>{{ totalCount }}</h2>
@@ -158,6 +155,22 @@
 
             </div>
 
+            <!-- Delete Record Button -->
+            <ion-button
+              class="delete-record-button"
+              fill="clear"
+              color="danger"
+              size="small"
+              (click)="confirmDelete(record)"
+              [attr.aria-label]="'Delete ' + getRecordTitle(record) + ' record'">
+
+              <ion-icon
+                slot="icon-only"
+                name="trash-outline">
+              </ion-icon>
+
+            </ion-button>
+
           </div>
 
           <!-- Record Details -->
@@ -188,15 +201,11 @@
 
 </ion-content>
 
-<!-- ===================================
-     Moonly Bottom Navigation
-     =================================== -->
-
+<!-- Moonly Bottom Navigation -->
 <ion-footer>
 
   <ion-tab-bar>
 
-    <!-- Overnight Page -->
     <ion-tab-button
       tab="overnight"
       [routerLink]="['/overnight']"
@@ -207,7 +216,6 @@
 
     </ion-tab-button>
 
-    <!-- Sleepiness Page -->
     <ion-tab-button
       tab="sleepiness"
       [routerLink]="['/sleepiness']"
@@ -218,7 +226,6 @@
 
     </ion-tab-button>
 
-    <!-- History Page -->
     <ion-tab-button
       tab="history"
       [routerLink]="['/history']"

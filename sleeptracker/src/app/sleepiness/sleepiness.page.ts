@@ -29,7 +29,8 @@ import {
   sunnyOutline,
   moonOutline,
   calendarOutline,
-  checkmarkCircleOutline
+  checkmarkCircleOutline,
+  refreshOutline
 } from 'ionicons/icons';
 
 import { SleepService } from '../services/sleep.service';
@@ -64,13 +65,17 @@ import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 })
 export class SleepinessPage {
 
+  // Currently selected Stanford Sleepiness Scale rating
   rating: number | null = null;
 
+  // Date and time of the check-in
   logTime: string = new Date().toISOString();
 
+  // Toast feedback
   showToast = false;
   toastMessage = '';
 
+  // Stanford Sleepiness Scale descriptions
   sleepinessLevels = [
     {
       value: 1,
@@ -104,18 +109,35 @@ export class SleepinessPage {
 
   constructor(private sleepService: SleepService) {
 
+    // Register Moonly icons
     addIcons({
       sunnyOutline,
       moonOutline,
       calendarOutline,
-      checkmarkCircleOutline
+      checkmarkCircleOutline,
+      refreshOutline
     });
 
   }
 
-  // Select sleepiness level
+  // Select a sleepiness rating
   selectRating(value: number): void {
     this.rating = value;
+  }
+
+  // Reset the current check-in without deleting saved records
+  resetForm(): void {
+
+    // Clear the selected rating
+    this.rating = null;
+
+    // Restore the current date and time
+    this.logTime = new Date().toISOString();
+
+    // Show reset confirmation
+    this.toastMessage = 'Check-in has been reset.';
+    this.showToast = true;
+
   }
 
   // Save daytime sleepiness record
@@ -123,7 +145,7 @@ export class SleepinessPage {
 
     const date = new Date(this.logTime);
 
-    // Validate selected rating and date
+    // Validate rating and date
     if (
       this.rating === null ||
       Number.isNaN(date.getTime()) ||
@@ -134,17 +156,16 @@ export class SleepinessPage {
         'Please select a valid rating and time.';
 
       this.showToast = true;
-
       return;
     }
 
-    // Create sleepiness record
+    // Create a Stanford Sleepiness Scale record
     const sleepinessData = new StanfordSleepinessData(
       this.rating,
       date
     );
 
-    // Save through SleepService
+    // Save the record through SleepService
     this.sleepService.logSleepinessData(sleepinessData);
 
     // Show success message
@@ -153,7 +174,7 @@ export class SleepinessPage {
 
     this.showToast = true;
 
-    // Reset form
+    // Clear the form after saving
     this.rating = null;
     this.logTime = new Date().toISOString();
 

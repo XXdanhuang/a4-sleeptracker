@@ -40,7 +40,6 @@
       </div>
 
       <!-- Horizontal Watercolor Moon Trail -->
-
       <div class="welcome-art-container">
         <img
           class="welcome-trail"
@@ -50,7 +49,6 @@
       </div>
 
     </section>
-
 
     <!-- ===================================
          Sleepiness Rating Card
@@ -89,19 +87,15 @@
 
       </ion-card-header>
 
-
       <ion-card-content>
 
         <!-- Scale Description -->
-
         <div class="scale-legend">
           <span>✦ 1 · Fully alert</span>
           <span>7 · Very sleepy ☾</span>
         </div>
 
-
         <!-- Rating Options -->
-
         <div
           class="rating-options"
           role="group"
@@ -135,9 +129,7 @@
 
         </div>
 
-
         <!-- Selected Rating Feedback -->
-
         <div
           *ngIf="rating !== null"
           class="selection-note"
@@ -155,7 +147,6 @@
       </ion-card-content>
 
     </ion-card>
-
 
     <!-- ===================================
          Date and Time Card
@@ -193,7 +184,6 @@
 
       </ion-card-header>
 
-
       <ion-card-content>
 
         <p class="date-helper">
@@ -215,7 +205,6 @@
 
     </ion-card>
 
-
     <!-- ===================================
          Save Button
          =================================== -->
@@ -234,6 +223,25 @@
 
     </ion-button>
 
+    <!-- ===================================
+         Reset Check-in Button
+         =================================== -->
+
+    <ion-button
+      expand="block"
+      fill="outline"
+      class="reset-button"
+      (click)="resetForm()"
+      aria-label="Reset sleepiness check-in">
+
+      <ion-icon
+        slot="start"
+        name="refresh-outline">
+      </ion-icon>
+
+      Reset Check-in
+
+    </ion-button>
 
     <!-- ===================================
          Watercolor Footer
@@ -254,7 +262,6 @@
 
   </main>
 
-
   <!-- ===================================
        Toast Feedback
        =================================== -->
@@ -268,7 +275,10 @@
 
 </ion-content>
 
-<!-- Moonly Bottom Navigation -->
+<!-- ===================================
+     Moonly Bottom Navigation
+     =================================== -->
+
 <ion-footer>
   <ion-tab-bar>
 

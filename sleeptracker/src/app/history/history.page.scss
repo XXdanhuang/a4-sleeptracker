@@ -606,3 +606,20 @@ ion-tab-button {
     height: 62px;
   }
 }
+
+/* Delete button for correcting saved records */
+.delete-record-button {
+  --color: #a56a8d;
+  --background: transparent;
+  --background-hover: rgba(165, 106, 141, 0.1);
+  --border-radius: 50%;
+
+  flex-shrink: 0;
+  margin-left: auto;
+  min-width: 44px;
+  min-height: 44px;
+
+  ion-icon {
+    font-size: 20px;
+  }
+}

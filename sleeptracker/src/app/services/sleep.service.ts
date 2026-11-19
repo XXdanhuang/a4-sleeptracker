@@ -199,4 +199,31 @@ export class SleepService {
       return false;
     }
   }
+
+  // Delete a sleep record from memory and localStorage
+  public deleteSleepData(id: string): boolean {
+    const recordExists = SleepService.AllSleepData.some(
+      data => data.id === id
+    );
+
+    if (!recordExists) {
+      return false;
+    }
+
+    SleepService.AllSleepData = SleepService.AllSleepData.filter(
+      data => data.id !== id
+    );
+
+    SleepService.AllOvernightData = SleepService.AllOvernightData.filter(
+      data => data.id !== id
+    );
+
+    SleepService.AllSleepinessData = SleepService.AllSleepinessData.filter(
+      data => data.id !== id
+    );
+
+    this.saveToStorage();
+
+    return true;
+  }
 }

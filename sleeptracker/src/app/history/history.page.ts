@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import {
+  AlertController,
   IonContent,
   IonHeader,
   IonTitle,
@@ -24,7 +25,8 @@ import {
   moonOutline,
   sunnyOutline,
   timeOutline,
-  calendarOutline
+  calendarOutline,
+  trashOutline
 } from 'ionicons/icons';
 
 import { SleepService } from '../services/sleep.service';
@@ -58,43 +60,37 @@ type HistoryFilter = 'all' | 'overnight' | 'sleepiness';
 })
 export class HistoryPage {
 
-  // Current filter
   selectedFilter: HistoryFilter = 'all';
 
-  constructor(private sleepService: SleepService) {
-
-    // Register icons used in the History page
+  constructor(
+    private sleepService: SleepService,
+    private alertController: AlertController
+  ) {
     addIcons({
       moonOutline,
       sunnyOutline,
       timeOutline,
-      calendarOutline
+      calendarOutline,
+      trashOutline
     });
-
   }
 
-  // Count overnight sleep records
   get overnightCount(): number {
     return SleepService.AllOvernightData.length;
   }
 
-  // Count daytime sleepiness records
   get sleepinessCount(): number {
     return SleepService.AllSleepinessData.length;
   }
 
-  // Count all sleep records
   get totalCount(): number {
     return SleepService.AllSleepData.length;
   }
 
-  // Display records based on the selected filter
   get filteredRecords(): SleepData[] {
-
     let records: SleepData[];
 
     switch (this.selectedFilter) {
-
       case 'overnight':
         records = SleepService.AllOvernightData;
         break;
@@ -106,31 +102,24 @@ export class HistoryPage {
       default:
         records = SleepService.AllSleepData;
         break;
-
     }
 
-    // Display the most recently added records first
     return [...records].reverse();
   }
 
-  // Update selected filter
   setFilter(filter: HistoryFilter): void {
     this.selectedFilter = filter;
   }
 
-  // Identify overnight sleep records
   isOvernight(record: SleepData): boolean {
     return record instanceof OvernightSleepData;
   }
 
-  // Identify daytime sleepiness records
   isSleepiness(record: SleepData): boolean {
     return record instanceof StanfordSleepinessData;
   }
 
-  // Display record title
   getRecordTitle(record: SleepData): string {
-
     if (this.isOvernight(record)) {
       return 'Overnight Sleep';
     }
@@ -142,14 +131,35 @@ export class HistoryPage {
     return 'Sleep Record';
   }
 
-  // Display record summary
   getRecordSummary(record: SleepData): string {
     return record.summaryString();
   }
 
-  // Display record date
   getRecordDate(record: SleepData): string {
     return record.dateString();
   }
 
+  // Confirm before deleting a saved record
+  async confirmDelete(record: SleepData): Promise<void> {
+    const alert = await this.alertController.create({
+      header: 'Delete Sleep Record?',
+      message:
+        'Are you sure you want to delete this record? This action cannot be undone.',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Delete',
+          role: 'destructive',
+          handler: () => {
+            this.sleepService.deleteSleepData(record.id);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 }
