@@ -9,5 +9,13 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
+  },  {
+    path: 'overnight',
+    loadComponent: () => import('./overnight/overnight.page').then( m => m.OvernightPage)
   },
+  {
+    path: 'history',
+    loadComponent: () => import('./history/history.page').then( m => m.HistoryPage)
+  },
+
 ];

@@ -1,37 +1,134 @@
+
 /*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * Moonly Sleep Tracker - Global Styles
+ * Cute, soft, and calming sleep tracker theme
  */
 
-/* Core CSS required for Ionic components to work properly */
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
+
+/* Core CSS required for Ionic components */
 @import "@ionic/angular/css/core.css";
 
-/* Basic CSS for apps built with Ionic */
+/* Basic Ionic CSS */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
 
-/* Optional CSS utils that can be commented out */
+/* Optional Ionic CSS utilities */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
+/* Ionic Dark Mode */
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+
+/* ========================================
+   Moonly Global Theme
+   ======================================== */
+
+:root {
+  /* Default font */
+  --ion-font-family: 'Nunito', sans-serif;
+
+  /* Moonly color palette */
+  --ion-color-primary: #8278d3;
+  --ion-color-primary-rgb: 130, 120, 211;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #726aba;
+  --ion-color-primary-tint: #8f86d8;
+}
+
+
+/* ========================================
+   Typography
+   ======================================== */
+
+/* Default body font */
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+}
+
+/* Cute rounded headings */
+h1,
+h2,
+h3,
+h4,
+ion-title,
+ion-card-title {
+  font-family: 'Fredoka', sans-serif;
+  letter-spacing: 0.2px;
+}
+
+/* Main headings */
+h1 {
+  font-weight: 600;
+}
+
+/* Secondary headings */
+h2,
+h3 {
+  font-weight: 500;
+}
+
+/* Paragraphs */
+p,
+ion-label,
+ion-note {
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Buttons */
+ion-button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-transform: none;
+}
+
+/* Bottom navigation */
+ion-tab-button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+
+/* Date and time selection */
+ion-datetime,
+ion-datetime-button {
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Toast messages */
+ion-toast {
+  font-family: 'Nunito', sans-serif;
+}
+
+
+/* ========================================
+   Moonly Global Visual Details
+   ======================================== */
+
+/* Smooth card appearance */
+ion-card {
+  overflow: hidden;
+}
+
+/* Header title */
+ion-title {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+/* Accessibility: keep text readable */
+ion-content {
+  font-family: 'Nunito', sans-serif;
+}
