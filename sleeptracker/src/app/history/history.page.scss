@@ -518,3 +518,91 @@ ion-tab-button {
     height: 90px;
   }
 }
+
+/* ========================================
+   MOONLY - UNIFIED PAGE PROPORTIONS
+   ======================================== */
+
+/* Unified page background */
+ion-content {
+  --background: #f5f0ff;
+}
+
+/* Unified header */
+ion-toolbar {
+  --background: #27134f;
+  --color: #ffffff;
+  --min-height: 58px;
+}
+
+ion-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+/* Match Overnight and Sleepiness width */
+.history-container {
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  box-sizing: border-box;
+}
+
+/* Keep hero aligned with the container */
+.history-hero {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Consistent content spacing */
+.history-content {
+  padding: 30px 24px 36px;
+}
+
+/* Unified bottom navigation */
+ion-footer {
+  box-shadow: 0 -3px 18px rgba(52, 25, 94, 0.09);
+}
+
+ion-tab-bar {
+  --background: #fffaff;
+  --color: #9487aa;
+  --color-selected: #7954bf;
+
+  height: 66px;
+  border-top: 1px solid #eae0f8;
+}
+
+ion-tab-button {
+  --color: #9487aa;
+  --color-selected: #7954bf;
+
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+
+  ion-icon {
+    font-size: 23px;
+    margin-bottom: 3px;
+  }
+
+  ion-label {
+    font-size: 12px;
+  }
+}
+
+/* Responsive mobile layout */
+@media (max-width: 480px) {
+  .history-hero {
+    padding: 28px 14px 32px;
+  }
+
+  .history-content {
+    padding: 24px 16px 30px;
+  }
+
+  ion-tab-bar {
+    height: 62px;
+  }
+}

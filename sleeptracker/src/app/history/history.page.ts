@@ -58,10 +58,12 @@ type HistoryFilter = 'all' | 'overnight' | 'sleepiness';
 })
 export class HistoryPage {
 
+  // Current filter
   selectedFilter: HistoryFilter = 'all';
 
   constructor(private sleepService: SleepService) {
 
+    // Register icons used in the History page
     addIcons({
       moonOutline,
       sunnyOutline,
@@ -71,60 +73,62 @@ export class HistoryPage {
 
   }
 
-  // Number of overnight sleep records
+  // Count overnight sleep records
   get overnightCount(): number {
     return SleepService.AllOvernightData.length;
   }
 
-  // Number of daytime sleepiness records
+  // Count daytime sleepiness records
   get sleepinessCount(): number {
     return SleepService.AllSleepinessData.length;
   }
 
-  // Total number of sleep records
+  // Count all sleep records
   get totalCount(): number {
     return SleepService.AllSleepData.length;
   }
 
-  // Filter sleep records by selected category
+  // Display records based on the selected filter
   get filteredRecords(): SleepData[] {
 
     let records: SleepData[];
 
-    if (this.selectedFilter === 'overnight') {
+    switch (this.selectedFilter) {
 
-      records = SleepService.AllOvernightData;
+      case 'overnight':
+        records = SleepService.AllOvernightData;
+        break;
 
-    } else if (this.selectedFilter === 'sleepiness') {
+      case 'sleepiness':
+        records = SleepService.AllSleepinessData;
+        break;
 
-      records = SleepService.AllSleepinessData;
-
-    } else {
-
-      records = SleepService.AllSleepData;
+      default:
+        records = SleepService.AllSleepData;
+        break;
 
     }
 
-    // Show recently added records first
+    // Display the most recently added records first
     return [...records].reverse();
   }
 
-  // Change selected filter
+  // Update selected filter
   setFilter(filter: HistoryFilter): void {
     this.selectedFilter = filter;
   }
 
-  // Check whether record is overnight sleep
+  // Identify overnight sleep records
   isOvernight(record: SleepData): boolean {
     return record instanceof OvernightSleepData;
   }
 
-  // Check whether record is daytime sleepiness
+  // Identify daytime sleepiness records
   isSleepiness(record: SleepData): boolean {
     return record instanceof StanfordSleepinessData;
   }
 
-  // Get record title
+  // Display record title
   getRecordTitle(record: SleepData): string {
 
     if (this.isOvernight(record)) {
@@ -138,12 +142,12 @@ export class HistoryPage {
     return 'Sleep Record';
   }
 
-  // Get record summary
+  // Display record summary
   getRecordSummary(record: SleepData): string {
     return record.summaryString();
   }
 
-  // Get record date
+  // Display record date
   getRecordDate(record: SleepData): string {
     return record.dateString();
   }

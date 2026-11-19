@@ -188,11 +188,12 @@
 
 </ion-content>
 
+
 <!-- Bottom Navigation -->
 <ion-footer>
-
   <ion-tab-bar>
 
+    <!-- Overnight -->
     <ion-tab-button
       tab="overnight"
       [routerLink]="['/overnight']"
@@ -203,6 +204,18 @@
 
     </ion-tab-button>
 
+    <!-- Sleepiness -->
+    <ion-tab-button
+      tab="sleepiness"
+      [routerLink]="['/sleepiness']"
+      aria-label="Daytime Sleepiness">
+
+      <ion-icon name="sunny-outline"></ion-icon>
+      <ion-label>Sleepiness</ion-label>
+
+    </ion-tab-button>
+
+    <!-- History -->
     <ion-tab-button
       tab="history"
       [routerLink]="['/history']"
@@ -214,5 +227,4 @@
     </ion-tab-button>
 
   </ion-tab-bar>
-
 </ion-footer>

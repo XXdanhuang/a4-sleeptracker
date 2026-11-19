@@ -28,9 +28,9 @@ import { addIcons } from 'ionicons';
 
 import {
   moonOutline,
+  sunnyOutline,
   timeOutline,
-  calendarOutline,
-  sunnyOutline
+  calendarOutline
 } from 'ionicons/icons';
 
 import { SleepService } from '../services/sleep.service';
@@ -75,11 +75,12 @@ export class OvernightPage {
   constructor(private sleepService: SleepService) {
 
     // Register icons used by the Moonly UI
+    
     addIcons({
       moonOutline,
+      sunnyOutline,
       timeOutline,
-      calendarOutline,
-      sunnyOutline
+      calendarOutline
     });
 
     // Default bedtime: yesterday at 11:00 PM

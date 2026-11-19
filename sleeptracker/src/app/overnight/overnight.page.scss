@@ -724,3 +724,28 @@ ion-tab-button {
     font-size: 28px;
   }
 }
+
+/* ========================================
+   Moonly - Unified Page Proportions
+   ======================================== */
+
+.sleep-container {
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.sleep-form {
+  padding: 24px 24px 36px;
+}
+
+.night-hero {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .sleep-form {
+    padding: 18px 14px 28px;
+  }
+}

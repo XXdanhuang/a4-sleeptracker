@@ -741,3 +741,126 @@ ion-datetime::part(time-button active) {
     font-size: 10px;
   }
 }
+
+/* ==========================================
+   Moonly - Unified Layout & Navigation
+   ========================================== */
+
+/* Match Overnight and History page background */
+.moonly-content {
+  --background: #f5f0ff;
+}
+
+/* Unified desktop content width */
+.page-container {
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 24px 24px 36px;
+  box-sizing: border-box;
+}
+
+/* Unified header */
+.moonly-toolbar {
+  --background: #27134f;
+  --color: #ffffff;
+  --min-height: 58px;
+}
+
+/* Unified brand typography */
+.brand {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+/* Larger welcome heading */
+.welcome-card h1 {
+  font-size: 31px;
+  font-weight: 600;
+}
+
+/* Larger body text */
+.welcome-description {
+  max-width: 520px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Preserve the watercolor artwork proportions */
+.welcome-art-container {
+  height: 150px;
+}
+
+.welcome-trail {
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Match card spacing */
+.moonly-card {
+  margin-bottom: 20px;
+  border-radius: 24px;
+}
+
+/* Match card title scale */
+ion-card-title {
+  font-size: 22px;
+}
+
+/* Improve readability on wider cards */
+.card-description,
+.rating-option {
+  font-size: 14px;
+}
+
+/* Unified bottom navigation */
+ion-footer {
+  box-shadow: 0 -3px 18px rgba(52, 25, 94, 0.09);
+}
+
+ion-tab-bar {
+  --background: #fffaff;
+  --color: #9487aa;
+  --color-selected: #7954bf;
+
+  height: 66px;
+  border-top: 1px solid #eae0f8;
+}
+
+ion-tab-button {
+  --color: #9487aa;
+  --color-selected: #7954bf;
+
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+
+  ion-icon {
+    font-size: 23px;
+    margin-bottom: 3px;
+  }
+
+  ion-label {
+    font-size: 12px;
+  }
+}
+
+/* Responsive mobile layout */
+@media (max-width: 480px) {
+  .page-container {
+    padding: 18px 14px 28px;
+  }
+
+  .welcome-card h1 {
+    font-size: 28px;
+  }
+
+  .welcome-art-container,
+  .welcome-trail {
+    height: 108px;
+  }
+
+  ion-tab-bar {
+    height: 62px;
+  }
+}

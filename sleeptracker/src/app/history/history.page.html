@@ -188,7 +188,10 @@
 
 </ion-content>
 
-<!-- Bottom Navigation -->
+<!-- ===================================
+     Moonly Bottom Navigation
+     =================================== -->
+
 <ion-footer>
 
   <ion-tab-bar>
@@ -201,6 +204,17 @@
 
       <ion-icon name="moon-outline"></ion-icon>
       <ion-label>Overnight</ion-label>
+
+    </ion-tab-button>
+
+    <!-- Sleepiness Page -->
+    <ion-tab-button
+      tab="sleepiness"
+      [routerLink]="['/sleepiness']"
+      aria-label="Daytime Sleepiness">
+
+      <ion-icon name="sunny-outline"></ion-icon>
+      <ion-label>Sleepiness</ion-label>
 
     </ion-tab-button>
 
